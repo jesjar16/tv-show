@@ -1,0 +1,31 @@
+{% extends "base_form.html" %}
+
+{% block title %}Tv Shows-Edit Show{% endblock %}
+
+{% block heading_title %} Edit {{ this_show.title }} {% endblock %}
+
+{% block show_id %} {{ this_show.id }} {% endblock %}
+
+{% block form_action %}{% url 'my_update' show_id=this_show.id %}{% endblock %}
+
+{% block network_select %}
+    <div class="mb-3">
+        <label for="show_network" class="form-label">Network</label>
+        <select class="form-select" id="show_network" name="show_network">
+            <option selected>Select a network</option>
+            {% for network in all_networks %}
+                {% if network.id == this_show.network.id %}
+                    <option value="{{ network.id }}" selected>{{ network.title }}</option>
+                {% else %}
+                    <option value="{{ network.id }}">{{ network.title }}</option>
+                {% endif %}
+            {% endfor %}   
+        </select>
+    </div>
+{% endblock %}
+
+{% block button_name %}Update{% endblock %}
+
+{% block form_link %}
+    <a href="{% url 'my_view' show_id=this_show.id %}" class="link-info">Go to Show</a>
+{% endblock %}

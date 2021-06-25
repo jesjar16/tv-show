@@ -1,0 +1,23 @@
+{% extends "base_form.html" %}
+
+{% block title %}Tv Shows-Add Show{% endblock %}
+
+{% block heading_title %}Add Show{% endblock %}
+
+{% block back_link %}{% url 'my_shows' %}{% endblock %}
+
+{% block form_action %}{% url 'my_create' %}{% endblock %}
+
+{% block network_select %}
+    <div class="mb-3">
+        <label for="show_network" class="form-label">Network</label>
+        <select class="form-select" id="show_network" name="show_network">
+            <option selected value="-">Select a network</option>
+            {% for network in all_networks %}
+                <option value="{{ network.id }}">{{ network.title }}</option>
+            {% endfor %}   
+        </select>
+    </div>
+{% endblock %}
+
+{% block button_name %}Create{% endblock %}
