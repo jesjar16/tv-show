@@ -16,8 +16,11 @@ def shows(request):
     return render(request, "shows.html", context)
 
 def new(request):
+    print("En new")
     # getting networks
     all_networks = Network.objects.all().order_by("title")
+    
+    print('all_networks ', all_networks)
     
     context = {
         'all_networks': all_networks
@@ -53,7 +56,7 @@ def create(request):
     show_description = request.POST['show_description']
     
     # getting a network instance
-    this_network = Network.objects.get(id=show_network)
+    this_network = Network.objects.create(title=show_network)
     
     # create the show instance using the network object
     this_show = Show.objects.create(title=show_title, description=show_description, release_date=show_date, network =this_network)

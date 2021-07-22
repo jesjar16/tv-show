@@ -11,12 +11,7 @@
 {% block network_select %}
     <div class="mb-3">
         <label for="show_network" class="form-label">Network</label>
-        <select class="form-select" id="show_network" name="show_network">
-            <option selected value="-">Select a network</option>
-            {% for network in all_networks %}
-                <option value="{{ network.id }}">{{ network.title }}</option>
-            {% endfor %}   
-        </select>
+        <input type="text" class="form-control" id="show_network" name="show_network" value="">
     </div>
 {% endblock %}
 
